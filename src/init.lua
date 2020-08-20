@@ -53,7 +53,26 @@ function Vector1:Cross(other)
 	return 0
 end
 
-Vector1.Unit = 1
+function Vector1:LookAt(target)
+    do
+        local TargetType = type(target)
 
+        assert(TargetType == "number" or (TargetType == "table" and target.X), "Given Target for Vector1 Method LookAt is not a \"number\" nor \"Vector1\".")
+    
+        target = TargetType == "table" and target.X or target
+    end
+
+    local eye = self.X
+
+    if target == 0 then
+        return 0
+    end
+
+    local angle = math.atan(eye / target)
+
+    return Vector1.new(lerp(eye, target, angle))
+end
+
+Vector1.Unit = 1
 
 return Vector1
