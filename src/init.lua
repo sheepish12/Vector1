@@ -49,10 +49,6 @@ function Vector1:Dot(other)
 	return self.X * other.X
 end
 
-function Vector1:Cross(other)
-	return 0
-end
-
 Vector1.Unit = 1
 
 
