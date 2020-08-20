@@ -64,7 +64,7 @@ function Vector1:LookAt(target)
 
     local eye = self.X
 
-    if eye == 0 and target == 0 then
+    if target == 0 then
         return 0
     end
 
