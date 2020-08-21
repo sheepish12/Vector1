@@ -31,13 +31,15 @@ Vector1 = {}
 function Vector1.new(x)
 	return setmetatable({
 		X = x,
-		Magnitude = x,
+		Magnitude = (x^2)^0.5,
+		Unit = x/math.abs(x),
 	}, {
 		__index = Vector1,
 		__add = add,
 		__sub = sub,
 		__mul = mul,
 		__div = div,
+		__metatable = "The metatable is locked"
 	})
 end
 
@@ -72,7 +74,5 @@ function Vector1:LookAt(target)
 
     return Vector1.new(lerp(eye, target, angle))
 end
-
-Vector1.Unit = 1
 
 return Vector1
